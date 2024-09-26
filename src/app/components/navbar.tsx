@@ -5,6 +5,7 @@ import {
   NavbarItem,
   Link,
 } from "@nextui-org/react";
+import { ThemeSwitcher } from "./theme-switcher";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <NavbarBrand>
         <p className="font-bold text-inherit">Yuri Cavalcante</p>
       </NavbarBrand>
+      <ThemeSwitcher />
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem isActive>
           <Link href="#">Frontend</Link>
