@@ -26,7 +26,7 @@ export default function App() {
               isBordered
               radius="full"
               size="md"
-              src="/path-to-your-avatar.png" // Troque pela URL do seu avatar
+              src="https://media.licdn.com/dms/image/v2/D4D03AQFXKGWdIQ0yWg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1727186840191?e=1732752000&v=beta&t=R2d8YGDZpOTcjdcQDj2O2uE1j0OKOa9_RGTS9egFUIU" // Troque pela URL do seu avatar
             />
             <div className="flex flex-col gap-1 items-start justify-center">
               <h4 className="text-small font-semibold leading-none text-default-600">
@@ -47,12 +47,15 @@ export default function App() {
             radius="full"
             size="sm"
             variant={isFollowed ? "bordered" : "solid"}
-            onPress={() => setIsFollowed(!isFollowed)}
+            onPress={() => {
+              setIsFollowed(!isFollowed);
+              window.open("https://www.linkedin.com/in/yuriwz/", "_blank");
+            }}
           >
             {isFollowed ? "Unfollow" : "Follow"}
           </Button>
         </CardHeader>
-        <CardBody className="px-3 py-0 text-small text-default-400 overflow-hidden">
+        <CardBody className="px-3 py-0 text-small  overflow-hidden">
           <p>
             Desenvolvedor fullstack com paixão por criar soluções de software
             escaláveis e focadas na experiência do usuário. Acompanhe meus
