@@ -46,7 +46,7 @@ export default function Home() {
           </div>
         </main>
         {/* Nova section ao lado do main */}
-        <div className="sm:items-start text-center sm:text-left bg-gradient-to-br from-[#ffe4e1] to-[#f0e68c] rounded-xl shadow-lg p-8 max-w-[578px]">
+        <div className="sm:items-start text-center sm:text-left bg-gradient-to-br from-[#ffe4e1] to-[#f0e68c] rounded-xl shadow-lg p-8 max-w-[658px]">
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
             <Card />
             <Calendar />
