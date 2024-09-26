@@ -52,7 +52,7 @@ export default function App() {
             {isFollowed ? "Unfollow" : "Follow"}
           </Button>
         </CardHeader>
-        <CardBody className="px-3 py-0 text-small text-default-400">
+        <CardBody className="px-3 py-0 text-small text-default-400 overflow-hidden">
           <p>
             Desenvolvedor fullstack com paixão por criar soluções de software
             escaláveis e focadas na experiência do usuário. Acompanhe meus
