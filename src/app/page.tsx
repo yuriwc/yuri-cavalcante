@@ -9,7 +9,7 @@ export default function Home() {
     <div className="p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <div className="flex flex-col lg:flex-row gap-16 row-start-2">
         <main className="flex flex-col gap-8 items-center sm:items-start text-center sm:text-left w-full sm:w-1/2">
-          <h1 className="font-semibold text-5xl leading-[48px]">
+          <h1 className="font-semibold leading-[48px] lg:text-5xl text-3xl">
             Entrego soluções de software{" "}
             <span className="inline font-semibold bg-clip-text text-transparent bg-gradient-to-b from-[#FF1CF7] to-[#b249f8] tracking-tight">
               poderosas
