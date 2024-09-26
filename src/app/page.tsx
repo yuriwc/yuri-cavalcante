@@ -7,7 +7,7 @@ import { Spacer } from "@nextui-org/react";
 export default function Home() {
   return (
     <div className="p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <div className="flex flex-col sm:flex-row gap-16 row-start-2">
+      <div className="flex flex-col lg:flex-row gap-16 row-start-2">
         <main className="flex flex-col gap-8 items-center sm:items-start text-center sm:text-left w-full sm:w-1/2">
           <h1 className="font-semibold text-5xl leading-[48px]">
             Entrego soluções de software{" "}
@@ -45,14 +45,12 @@ export default function Home() {
             </a>
           </div>
         </main>
-
         {/* Nova section ao lado do main */}
-        <div className="flex flex-col gap-8 items-center sm:items-start text-center sm:text-left w-full sm:w-1/2 bg-gradient-to-br from-[#ffe4e1] to-[#f0e68c] rounded-xl shadow-lg p-8">
-          <div className="flex flex-row">
+        <div className="sm:items-start text-center sm:text-left bg-gradient-to-br from-[#ffe4e1] to-[#f0e68c] rounded-xl shadow-lg p-8 max-w-[578px]">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
             <Card />
             <Calendar />
           </div>
-
           <Spacer y={2} />
           <Player />
         </div>
