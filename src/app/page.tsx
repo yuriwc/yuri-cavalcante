@@ -1,8 +1,9 @@
-import Image from "next/image";
 import Card from "./components/card";
 import Calendar from "./components/calendar";
 import Player from "./components/player";
-import { Spacer } from "@nextui-org/react";
+import { Button, Spacer } from "@nextui-org/react";
+import Portfolio from "./components/portfolio";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -17,28 +18,21 @@ export default function Home() {
             , independentemente da complexidade.
           </h1>
           <div className="flex gap-4 items-center flex-col sm:flex-row">
-            <a
-              className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-              href="https://www.linkedin.com/in/yuriwz/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Entre em contato"
-            >
-              Entre em contato
-            </a>
+            <Link href="https://www.linkedin.com/in/yuriwz/">
+              <Button size="lg" color="primary">
+                Entre em contato
+              </Button>
+            </Link>
 
             <a
               className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-              href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#"
               aria-label="Veja meus projetos"
             >
               Veja meus projetos
             </a>
           </div>
         </main>
-        {/* Nova section ao lado do main */}
         <div className="sm:items-start text-center sm:text-left bg-gradient-to-br from-[#ffe4e1] to-[#f0e68c] rounded-xl shadow-lg p-8 max-w-[658px]">
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
             <Card />
@@ -48,54 +42,23 @@ export default function Home() {
           <Player />
         </div>
       </div>
-      <Spacer y={4} />
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+      {/* Seção com degradê */}
+      <section
+        id="frontend"
+        className="bg-gradient-to-r from-blue-200 via-pink-50 to-green-100 p-10 rounded-xl shadow-md mt-10
+                    dark:from-blue-700 dark:via-pink-700 dark:to-green-700 dark:bg-gray-400"
+      >
+        {/* Conteúdo da seção */}
+        <h2 className="text-2xl font-bold">Frontend</h2>
+        <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
+          Aqui está uma visão geral dos meus projetos e habilidades em
+          desenvolvimento frontend, com foco em interfaces responsivas e UX
+          otimizada.
+        </p>
+        <Spacer y={2} />
+        <Portfolio />
+      </section>
     </div>
   );
 }
