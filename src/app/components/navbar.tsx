@@ -16,6 +16,9 @@ function App() {
       <ThemeSwitcher />
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem isActive>
+          <Link href="#home">Home</Link>
+        </NavbarItem>
+        <NavbarItem>
           <Link href="#frontend">Frontend</Link>
         </NavbarItem>
         <NavbarItem>
