@@ -427,7 +427,7 @@ const App = () => {
   return (
     <div className="w-full">
       {/* Company Filter */}
-      <div className="flex flex-wrap gap-2 mb-8 justify-center">
+      <div className="flex flex-wrap gap-2 mb-8 justify-center px-2 sm:px-4">
         {companies.map((company) => (
           <Button
             key={company}
@@ -450,39 +450,38 @@ const App = () => {
       {/* Frontend Projects Section */}
       {frontendProjects.length > 0 ? (
         <div className="mb-12">
-          <div className="flex items-center gap-3 mb-6 px-4">
+          <div className="flex items-center gap-3 mb-6 px-2 sm:px-4">
             <div className="flex items-center gap-2">
               <span className="text-2xl">🌐</span>
-              <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <h2 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Frontend & Mobile
               </h2>
             </div>
             <div className="flex-1 h-px bg-gradient-to-r from-blue-200 to-purple-200 dark:from-blue-800 dark:to-purple-800"></div>
-            <span className="text-sm text-gray-500 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/20 px-3 py-1 rounded-full">
+            <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/20 px-2 sm:px-3 py-1 rounded-full">
               {frontendProjects.length} projeto
               {frontendProjects.length !== 1 ? "s" : ""}
             </span>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 px-2 sm:px-4">
             {/* Frontend projects content */}
             {frontendProjects.map((project) => (
               <Card
                 key={project.id}
-                className="h-[380px] group hover:scale-105 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl"
+                className="h-[320px] sm:h-[380px] group hover:scale-105 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl"
                 isPressable
                 onPress={() => openProjectModal(project)}
               >
-                {/* ...existing card content... */}
-                <CardHeader className="absolute z-10 top-1 flex-col !items-start bg-black/70 backdrop-blur-sm rounded-lg m-3 p-3">
+                <CardHeader className="absolute z-10 top-1 flex-col !items-start bg-black/70 backdrop-blur-sm rounded-lg m-2 sm:m-3 p-2 sm:p-3">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xl">
+                    <span className="text-lg sm:text-xl">
                       {getCategoryIcon(project.category)}
                     </span>
                     <Chip
                       size="sm"
                       color={getCompanyColor(project.company)}
                       variant="solid"
-                      className="text-white font-medium"
+                      className="text-white font-medium text-xs"
                     >
                       {project.company}
                     </Chip>
@@ -500,7 +499,7 @@ const App = () => {
                   <p className="text-tiny text-white/90 font-bold uppercase tracking-wider">
                     {project.category}
                   </p>
-                  <h4 className="text-white font-bold text-lg leading-tight">
+                  <h4 className="text-white font-bold text-sm sm:text-lg leading-tight">
                     {project.title}
                   </h4>
                 </CardHeader>
@@ -528,11 +527,11 @@ const App = () => {
           </div>
         </div>
       ) : (
-        <div className="mb-12 px-4">
+        <div className="mb-12 px-2 sm:px-4">
           <div className="flex items-center gap-3 mb-6">
             <div className="flex items-center gap-2">
               <span className="text-2xl opacity-50">🌐</span>
-              <h2 className="text-2xl font-bold text-gray-400 dark:text-gray-600">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-400 dark:text-gray-600">
                 Frontend & Mobile
               </h2>
             </div>
@@ -540,7 +539,7 @@ const App = () => {
           </div>
           <div className="text-center py-8 bg-gray-50 dark:bg-gray-800/50 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600">
             <span className="text-4xl mb-4 block opacity-50">📱</span>
-            <p className="text-gray-500 dark:text-gray-400">
+            <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base">
               Nenhum projeto frontend/mobile encontrado para{" "}
               <span className="font-medium">{selectedCompany}</span>
             </p>
@@ -551,37 +550,37 @@ const App = () => {
       {/* Backend Projects Section */}
       {backendProjects.length > 0 ? (
         <div id="backend" className="mb-12">
-          <div className="flex items-center gap-3 mb-6 px-4">
+          <div className="flex items-center gap-3 mb-6 px-2 sm:px-4">
             <div className="flex items-center gap-2">
               <span className="text-2xl">⚙️</span>
-              <h2 className="text-2xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+              <h2 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
                 Backend & APIs
               </h2>
             </div>
             <div className="flex-1 h-px bg-gradient-to-r from-green-200 to-emerald-200 dark:from-green-800 dark:to-emerald-800"></div>
-            <span className="text-sm text-gray-500 dark:text-gray-400 bg-green-50 dark:bg-green-900/20 px-3 py-1 rounded-full">
+            <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 bg-green-50 dark:bg-green-900/20 px-2 sm:px-3 py-1 rounded-full">
               {backendProjects.length} projeto
               {backendProjects.length !== 1 ? "s" : ""}
             </span>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 px-2 sm:px-4">
             {backendProjects.map((project) => (
               <Card
                 key={project.id}
-                className="h-[380px] group hover:scale-105 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl"
+                className="h-[320px] sm:h-[380px] group hover:scale-105 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl"
                 isPressable
                 onPress={() => openProjectModal(project)}
               >
-                <CardHeader className="absolute z-10 top-1 flex-col !items-start bg-black/70 backdrop-blur-sm rounded-lg m-3 p-3">
+                <CardHeader className="absolute z-10 top-1 flex-col !items-start bg-black/70 backdrop-blur-sm rounded-lg m-2 sm:m-3 p-2 sm:p-3">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xl">
+                    <span className="text-lg sm:text-xl">
                       {getCategoryIcon(project.category)}
                     </span>
                     <Chip
                       size="sm"
                       color={getCompanyColor(project.company)}
                       variant="solid"
-                      className="text-white font-medium"
+                      className="text-white font-medium text-xs"
                     >
                       {project.company}
                     </Chip>
@@ -600,7 +599,7 @@ const App = () => {
                   <p className="text-tiny text-white/90 font-bold uppercase tracking-wider">
                     {project.category}
                   </p>
-                  <h4 className="text-white font-bold text-lg leading-tight">
+                  <h4 className="text-white font-bold text-sm sm:text-lg leading-tight">
                     {project.title}
                   </h4>
                 </CardHeader>
@@ -646,11 +645,11 @@ const App = () => {
           </div>
         </div>
       ) : (
-        <div id="backend" className="mb-12 px-4">
+        <div id="backend" className="mb-12 px-2 sm:px-4">
           <div className="flex items-center gap-3 mb-6">
             <div className="flex items-center gap-2">
               <span className="text-2xl opacity-50">⚙️</span>
-              <h2 className="text-2xl font-bold text-gray-400 dark:text-gray-600">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-400 dark:text-gray-600">
                 Backend & APIs
               </h2>
             </div>
@@ -658,7 +657,7 @@ const App = () => {
           </div>
           <div className="text-center py-8 bg-gray-50 dark:bg-gray-800/50 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600">
             <span className="text-4xl mb-4 block opacity-50">⚙️</span>
-            <p className="text-gray-500 dark:text-gray-400">
+            <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base">
               Nenhum projeto backend/API encontrado para{" "}
               <span className="font-medium">{selectedCompany}</span>
             </p>
@@ -712,7 +711,7 @@ const App = () => {
               <ModalBody className="p-6">
                 <div className="space-y-6">
                   {/* Project Image */}
-                  <div className="rounded-lg overflow-hidden shadow-lg relative">
+                  <div className="rounded-lg overflow-hidden shadow-lg relative group">
                     {selectedProject?.image ? (
                       <>
                         <Image
@@ -722,11 +721,16 @@ const App = () => {
                           onClick={() => setIsImageFullscreen(true)}
                         />
                         <div
-                          className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 hover:opacity-100 transition-opacity duration-300 cursor-pointer"
+                          className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
                           onClick={() => setIsImageFullscreen(true)}
                         >
-                          <div className="bg-white/20 backdrop-blur-sm rounded-full p-3">
+                          <div className="bg-white/20 backdrop-blur-sm rounded-full p-3 transform scale-95 group-hover:scale-100 transition-transform duration-300">
                             <span className="text-white text-2xl">🔍</span>
+                          </div>
+                          <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-2">
+                            <p className="text-white text-sm font-medium">
+                              Clique para ampliar
+                            </p>
                           </div>
                         </div>
                       </>
@@ -927,46 +931,117 @@ const App = () => {
         </ModalContent>
       </Modal>
 
-      {/* Fullscreen Image Modal */}
+      {/* Enhanced Image Modal */}
       {selectedProject?.image && (
         <Modal
-          size="full"
+          size="3xl"
           isOpen={isImageFullscreen}
           onClose={() => setIsImageFullscreen(false)}
-          hideCloseButton
+          scrollBehavior="inside"
           classNames={{
-            base: "m-0 bg-black/95",
+            base: "max-h-[85vh] m-4",
             body: "p-0",
+            header: "border-b border-gray-200 dark:border-gray-700",
           }}
         >
           <ModalContent>
             {(onClose) => (
               <>
-                <ModalBody className="flex items-center justify-center p-4">
-                  <div className="relative max-w-full max-h-full">
-                    {selectedProject?.image && (
-                      <Image
-                        src={selectedProject.image.src}
-                        alt={selectedProject.title}
-                        className="max-w-full max-h-[90vh] object-contain"
-                      />
-                    )}
-                    <Button
-                      isIconOnly
-                      color="danger"
-                      variant="solid"
-                      onPress={onClose}
-                      className="absolute top-4 right-4 z-10"
-                    >
-                      ✕
-                    </Button>
-                    <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-sm rounded-lg p-3">
-                      <h3 className="text-white font-bold text-lg">
+                <ModalHeader className="p-4">
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">
+                      {selectedProject &&
+                        getCategoryIcon(selectedProject.category)}
+                    </span>
+                    <div>
+                      <h3 className="text-xl font-bold">
                         {selectedProject?.title}
                       </h3>
-                      <p className="text-white/80 text-sm">
-                        {selectedProject?.company}
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                        {selectedProject?.company} • Vista Detalhada
                       </p>
+                    </div>
+                  </div>
+                </ModalHeader>
+                <ModalBody className="p-4">
+                  <div className="space-y-4">
+                    {/* Image with better presentation */}
+                    <div className="relative rounded-xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
+                      {selectedProject?.image && (
+                        <Image
+                          src={selectedProject.image.src}
+                          alt={selectedProject.title}
+                          className="w-full max-h-[50vh] object-contain"
+                        />
+                      )}
+                    </div>
+
+                    {/* Project Quick Info */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 border border-blue-200 dark:border-blue-700">
+                        <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2 flex items-center gap-2">
+                          <span>📋</span>
+                          Descrição
+                        </h4>
+                        <p className="text-blue-800 dark:text-blue-200 text-sm leading-relaxed">
+                          {selectedProject?.description}
+                        </p>
+                      </div>
+
+                      <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4 border border-green-200 dark:border-green-700">
+                        <h4 className="font-semibold text-green-900 dark:text-green-100 mb-3 flex items-center gap-2">
+                          <span>🛠️</span>
+                          Tecnologias Principais
+                        </h4>
+                        <div className="flex flex-wrap gap-1">
+                          {selectedProject?.technologies
+                            .slice(0, 4)
+                            .map((tech) => (
+                              <Chip
+                                key={tech}
+                                size="sm"
+                                color="success"
+                                variant="flat"
+                                className="text-xs"
+                              >
+                                {tech}
+                              </Chip>
+                            ))}
+                          {selectedProject?.technologies.length > 4 && (
+                            <Chip
+                              size="sm"
+                              color="default"
+                              variant="flat"
+                              className="text-xs"
+                            >
+                              +{selectedProject.technologies.length - 4} mais
+                            </Chip>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Action buttons */}
+                    <div className="flex gap-3 justify-end pt-4 border-t border-gray-200 dark:border-gray-700">
+                      <Button
+                        color="default"
+                        variant="bordered"
+                        onPress={onClose}
+                        size="md"
+                      >
+                        Fechar
+                      </Button>
+                      <Button
+                        color="primary"
+                        onPress={() => {
+                          onClose();
+                          // Modal principal já estará aberto
+                        }}
+                        size="md"
+                        className="font-medium"
+                      >
+                        Ver Detalhes Completos
+                      </Button>
                     </div>
                   </div>
                 </ModalBody>
