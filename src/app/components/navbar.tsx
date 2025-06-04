@@ -22,12 +22,12 @@ function App() {
           <Link href="#frontend">Frontend</Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#" aria-current="page">
+          <Link color="foreground" href="#backend" aria-current="page">
             Backend
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#">
+          <Link color="foreground" href="#frontend">
             Mobile
           </Link>
         </NavbarItem>

@@ -401,6 +401,19 @@ const App = () => {
     selectedCompany === "Todos" ? true : project.company === selectedCompany
   );
 
+  // Separar projetos por tipo
+  const frontendProjects = filteredProjects.filter(
+    (project) =>
+      project.category === "web" ||
+      project.category === "mobile" ||
+      project.category === "dashboard" ||
+      project.category === "ai"
+  );
+
+  const backendProjects = filteredProjects.filter(
+    (project) => project.category === "backend"
+  );
+
   const openProjectModal = (project: Project) => {
     setSelectedProject(project);
     setIsModalOpen(true);
@@ -434,67 +447,224 @@ const App = () => {
         ))}
       </div>
 
-      {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
-        {filteredProjects.map((project) => (
-          <Card
-            key={project.id}
-            className="h-[380px] group hover:scale-105 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl"
-            isPressable
-            onPress={() => openProjectModal(project)}
-          >
-            <CardHeader className="absolute z-10 top-1 flex-col !items-start bg-black/70 backdrop-blur-sm rounded-lg m-3 p-3">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-xl">
-                  {getCategoryIcon(project.category)}
-                </span>
-                <Chip
-                  size="sm"
-                  color={getCompanyColor(project.company)}
-                  variant="solid"
-                  className="text-white font-medium"
-                >
-                  {project.company}
-                </Chip>
-              </div>
-              {/* Badge de Desenvolvimento Autoral */}
-              <div className="flex items-center gap-1 mb-2">
-                <Chip
-                  size="sm"
-                  color="secondary"
-                  variant="solid"
-                  className="text-white font-bold text-xs px-2 py-1"
-                >
-                  👨‍💻 100% Autoral
-                </Chip>
-              </div>
-              <p className="text-tiny text-white/90 font-bold uppercase tracking-wider">
-                {project.category}
-              </p>
-              <h4 className="text-white font-bold text-lg leading-tight">
-                {project.title}
-              </h4>
-            </CardHeader>
-            {project.image ? (
-              <Image
-                removeWrapper
-                alt={project.title}
-                className="z-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                src={project.image.src}
-              />
-            ) : (
-              <div className="z-0 w-full h-full bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                <div className="text-center text-white/80">
-                  <span className="text-6xl mb-4 block">⚙️</span>
-                  <div className="text-lg font-bold">Backend API</div>
-                  <div className="text-sm opacity-70">{project.company}</div>
-                </div>
-              </div>
-            )}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </Card>
-        ))}
-      </div>
+      {/* Frontend Projects Section */}
+      {frontendProjects.length > 0 ? (
+        <div className="mb-12">
+          <div className="flex items-center gap-3 mb-6 px-4">
+            <div className="flex items-center gap-2">
+              <span className="text-2xl">🌐</span>
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Frontend & Mobile
+              </h2>
+            </div>
+            <div className="flex-1 h-px bg-gradient-to-r from-blue-200 to-purple-200 dark:from-blue-800 dark:to-purple-800"></div>
+            <span className="text-sm text-gray-500 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/20 px-3 py-1 rounded-full">
+              {frontendProjects.length} projeto
+              {frontendProjects.length !== 1 ? "s" : ""}
+            </span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+            {/* Frontend projects content */}
+            {frontendProjects.map((project) => (
+              <Card
+                key={project.id}
+                className="h-[380px] group hover:scale-105 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl"
+                isPressable
+                onPress={() => openProjectModal(project)}
+              >
+                {/* ...existing card content... */}
+                <CardHeader className="absolute z-10 top-1 flex-col !items-start bg-black/70 backdrop-blur-sm rounded-lg m-3 p-3">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-xl">
+                      {getCategoryIcon(project.category)}
+                    </span>
+                    <Chip
+                      size="sm"
+                      color={getCompanyColor(project.company)}
+                      variant="solid"
+                      className="text-white font-medium"
+                    >
+                      {project.company}
+                    </Chip>
+                  </div>
+                  <div className="flex items-center gap-1 mb-2">
+                    <Chip
+                      size="sm"
+                      color="secondary"
+                      variant="solid"
+                      className="text-white font-bold text-xs px-2 py-1"
+                    >
+                      👨‍💻 100% Autoral
+                    </Chip>
+                  </div>
+                  <p className="text-tiny text-white/90 font-bold uppercase tracking-wider">
+                    {project.category}
+                  </p>
+                  <h4 className="text-white font-bold text-lg leading-tight">
+                    {project.title}
+                  </h4>
+                </CardHeader>
+                {project.image ? (
+                  <Image
+                    removeWrapper
+                    alt={project.title}
+                    className="z-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    src={project.image.src}
+                  />
+                ) : (
+                  <div className="z-0 w-full h-full bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                    <div className="text-center text-white/80">
+                      <span className="text-6xl mb-4 block">⚙️</span>
+                      <div className="text-lg font-bold">Backend API</div>
+                      <div className="text-sm opacity-70">
+                        {project.company}
+                      </div>
+                    </div>
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </Card>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="mb-12 px-4">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-2">
+              <span className="text-2xl opacity-50">🌐</span>
+              <h2 className="text-2xl font-bold text-gray-400 dark:text-gray-600">
+                Frontend & Mobile
+              </h2>
+            </div>
+            <div className="flex-1 h-px bg-gray-200 dark:bg-gray-700"></div>
+          </div>
+          <div className="text-center py-8 bg-gray-50 dark:bg-gray-800/50 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600">
+            <span className="text-4xl mb-4 block opacity-50">📱</span>
+            <p className="text-gray-500 dark:text-gray-400">
+              Nenhum projeto frontend/mobile encontrado para{" "}
+              <span className="font-medium">{selectedCompany}</span>
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Backend Projects Section */}
+      {backendProjects.length > 0 ? (
+        <div id="backend" className="mb-12">
+          <div className="flex items-center gap-3 mb-6 px-4">
+            <div className="flex items-center gap-2">
+              <span className="text-2xl">⚙️</span>
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                Backend & APIs
+              </h2>
+            </div>
+            <div className="flex-1 h-px bg-gradient-to-r from-green-200 to-emerald-200 dark:from-green-800 dark:to-emerald-800"></div>
+            <span className="text-sm text-gray-500 dark:text-gray-400 bg-green-50 dark:bg-green-900/20 px-3 py-1 rounded-full">
+              {backendProjects.length} projeto
+              {backendProjects.length !== 1 ? "s" : ""}
+            </span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+            {backendProjects.map((project) => (
+              <Card
+                key={project.id}
+                className="h-[380px] group hover:scale-105 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl"
+                isPressable
+                onPress={() => openProjectModal(project)}
+              >
+                <CardHeader className="absolute z-10 top-1 flex-col !items-start bg-black/70 backdrop-blur-sm rounded-lg m-3 p-3">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-xl">
+                      {getCategoryIcon(project.category)}
+                    </span>
+                    <Chip
+                      size="sm"
+                      color={getCompanyColor(project.company)}
+                      variant="solid"
+                      className="text-white font-medium"
+                    >
+                      {project.company}
+                    </Chip>
+                  </div>
+                  {/* Badge de Desenvolvimento Autoral */}
+                  <div className="flex items-center gap-1 mb-2">
+                    <Chip
+                      size="sm"
+                      color="secondary"
+                      variant="solid"
+                      className="text-white font-bold text-xs px-2 py-1"
+                    >
+                      👨‍💻 100% Autoral
+                    </Chip>
+                  </div>
+                  <p className="text-tiny text-white/90 font-bold uppercase tracking-wider">
+                    {project.category}
+                  </p>
+                  <h4 className="text-white font-bold text-lg leading-tight">
+                    {project.title}
+                  </h4>
+                </CardHeader>
+                {project.image ? (
+                  <Image
+                    removeWrapper
+                    alt={project.title}
+                    className="z-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    src={project.image.src}
+                  />
+                ) : (
+                  <div className="z-0 w-full h-full bg-gradient-to-br from-emerald-900 via-green-800 to-teal-900 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 relative overflow-hidden">
+                    {/* Background Pattern */}
+                    <div className="absolute inset-0 opacity-10">
+                      <div
+                        className="absolute inset-0 bg-repeat bg-center"
+                        style={{
+                          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='20' cy='20' r='2'/%3E%3C/g%3E%3C/svg%3E")`,
+                          backgroundSize: "40px 40px",
+                        }}
+                      ></div>
+                    </div>
+                    <div className="text-center text-white/90 z-10">
+                      <div className="relative mb-4">
+                        <span className="text-7xl block animate-pulse">⚙️</span>
+                        <div className="absolute -top-2 -right-2 w-4 h-4 bg-green-400 rounded-full animate-ping"></div>
+                      </div>
+                      <div className="text-xl font-bold mb-2 tracking-wide">
+                        Backend API
+                      </div>
+                      <div className="text-sm opacity-80 mb-1 font-medium">
+                        {project.company}
+                      </div>
+                      <div className="text-xs opacity-60 px-3 py-1 bg-white/10 rounded-full backdrop-blur-sm">
+                        Sistema Enterprise
+                      </div>
+                    </div>
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </Card>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div id="backend" className="mb-12 px-4">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-2">
+              <span className="text-2xl opacity-50">⚙️</span>
+              <h2 className="text-2xl font-bold text-gray-400 dark:text-gray-600">
+                Backend & APIs
+              </h2>
+            </div>
+            <div className="flex-1 h-px bg-gray-200 dark:bg-gray-700"></div>
+          </div>
+          <div className="text-center py-8 bg-gray-50 dark:bg-gray-800/50 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600">
+            <span className="text-4xl mb-4 block opacity-50">⚙️</span>
+            <p className="text-gray-500 dark:text-gray-400">
+              Nenhum projeto backend/API encontrado para{" "}
+              <span className="font-medium">{selectedCompany}</span>
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Project Details Modal */}
       <Modal
@@ -561,17 +731,32 @@ const App = () => {
                         </div>
                       </>
                     ) : (
-                      <div className="w-full h-64 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 flex items-center justify-center">
-                        <div className="text-center text-white">
-                          <span className="text-8xl mb-4 block">⚙️</span>
-                          <div className="text-2xl font-bold mb-2">
+                      <div className="w-full h-64 bg-gradient-to-br from-emerald-900 via-green-800 to-teal-900 flex items-center justify-center relative overflow-hidden">
+                        {/* Background Pattern */}
+                        <div className="absolute inset-0 opacity-10">
+                          <div
+                            className="absolute inset-0 bg-repeat bg-center"
+                            style={{
+                              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='3'/%3E%3C/g%3E%3C/svg%3E")`,
+                              backgroundSize: "60px 60px",
+                            }}
+                          ></div>
+                        </div>
+                        <div className="text-center text-white z-10">
+                          <div className="relative mb-6">
+                            <span className="text-8xl block animate-pulse">
+                              ⚙️
+                            </span>
+                            <div className="absolute -top-3 -right-3 w-6 h-6 bg-green-400 rounded-full animate-ping"></div>
+                          </div>
+                          <div className="text-3xl font-bold mb-3 tracking-wide">
                             Backend API
                           </div>
-                          <div className="text-lg opacity-70">
+                          <div className="text-xl opacity-80 mb-2 font-medium">
                             {selectedProject?.company}
                           </div>
-                          <div className="text-sm opacity-50 mt-2">
-                            Sistema de Backend Robusto
+                          <div className="text-sm opacity-60 px-4 py-2 bg-white/10 rounded-full backdrop-blur-sm inline-block">
+                            Sistema Enterprise de Alta Performance
                           </div>
                         </div>
                       </div>
